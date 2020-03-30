@@ -31,4 +31,20 @@ describe('auth routes', () => {
         });
       });
   });
+
+  it('logs in a user', async() => {
+    await User.create({ username: 'jim', password: 'jimwashere' });
+
+    return request(app)
+      .post('/api/v1/auth/login')
+      .send({ username: 'jim', password: 'jimwashere' })
+      .then(res => {
+        expect(res.body).toEqual({
+          _id: expect.any(String),
+          username: 'jim',
+          __v: 0
+        });
+      });
+  });
+
 });

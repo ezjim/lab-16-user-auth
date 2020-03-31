@@ -51,7 +51,7 @@ describe('auth routes', () => {
 
     return request(app)
       .post('/api/v1/auth/login')
-      .send({ username: 'jim', password: 'badPassword!oops' })
+      .send({ username: 'jimmy', password: 'badPassword!oops' })
       .then(res => {
         expect(res.body).toEqual({
           message: 'Invalid username/password',  // because we send a bad password
@@ -59,4 +59,5 @@ describe('auth routes', () => {
         });
       });
   });
+
 });
